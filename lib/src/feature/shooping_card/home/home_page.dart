@@ -5,6 +5,7 @@ import 'package:test_shooping/src/feature/shooping_card/home/home_controller.dar
 import 'package:get/get.dart';
 
 import '../cart_page/card_page.dart';
+import 'widgets/card_produt.dart';
 
 class HomePage extends GetWidget<HomeController> {
   const HomePage({super.key});
@@ -14,6 +15,7 @@ class HomePage extends GetWidget<HomeController> {
     controller.onInit();
     return Scaffold(
       appBar: AppBar(
+        elevation: 2,
         title: const Text('Lista de Productos'),
         actions: [
           IconButton(
@@ -27,7 +29,6 @@ class HomePage extends GetWidget<HomeController> {
                       removeFromCart: controller.removeFromCart),
                 ),
               );
-              controller.calculateTotalPrice();
             },
           ),
         ],
@@ -39,32 +40,9 @@ class HomePage extends GetWidget<HomeController> {
             itemBuilder: (context, index) {
               controller.loadProducts();
               final product = controller.products?[index];
-              return GestureDetector(
-                onTap: () {
-                  controller.addToCart(product);
-                  controller.calculateTotalPrice();
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    SnackBar(
-                      duration: const Duration(seconds: 1),
-                      backgroundColor: Colors.green[200],
-                      content: Text(
-                        '${product['name']} adicionado ao carrinho!',
-                        style: const TextStyle(color: Colors.black),
-                      ),
-                    ),
-                  );
-                },
-                child: Card(
-                  margin: const EdgeInsets.all(8.0),
-                  child: ListTile(
-                    leading: CircleAvatar(
-                      backgroundImage: NetworkImage(product['image']),
-                    ),
-                    title: Text(product['name']),
-                    subtitle: Text(product['detail']),
-                    trailing: Text('\$${product['price']}'),
-                  ),
-                ),
+              return CardProdut(
+                product: product,
+                controller: controller,
               );
             },
           );

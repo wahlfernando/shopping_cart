@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:test_shooping/src/feature/shooping_card/home/home_controller.dart';
 import 'package:get/get.dart';
 
-class CartPage extends GetWidget<HomeController> {
+class CartPage extends StatelessWidget {
   final List<dynamic> cart;
   final Function(int) removeFromCart;
 
@@ -14,7 +14,6 @@ class CartPage extends GetWidget<HomeController> {
 
   @override
   Widget build(BuildContext context) {
-    HomeController controller = HomeController();
     return Scaffold(
       appBar: AppBar(
         title: const Text('Carrinho de compras'),
@@ -35,7 +34,6 @@ class CartPage extends GetWidget<HomeController> {
                   icon: const Icon(Icons.remove_shopping_cart),
                   onPressed: () {
                     removeFromCart(index);
-                    controller.calculateTotalPrice();
                     ScaffoldMessenger.of(context).showSnackBar(
                       SnackBar(
                         duration: const Duration(seconds: 1),
@@ -56,11 +54,17 @@ class CartPage extends GetWidget<HomeController> {
       ),
       bottomNavigationBar: Padding(
         padding: const EdgeInsets.all(8.0),
-        child: Obx(() => Text(
-                  'Total Price: ${controller.totalPrice.value.toStringAsFixed(2)}',
-                  style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-                )),
+        child: Text(
+          'Valor Total: \$${getTotalPrice().toStringAsFixed(2)}',
+          style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+        ),
       ),
     );
   }
+
+  double getTotalPrice() {
+    return cart.fold(
+        0, (total, current) => total + double.parse(current['price']));
+  }
+
 }
