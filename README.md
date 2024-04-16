@@ -6,10 +6,8 @@ Obs.: Projeto criado somente em Android, é para demostração apenas.
 
 Projeto desenvolvido nos seguintes termos:
  * Tecnologia: Flutter - Versão 3.19.4;
- * Conectividade em arquivo local: products.json
- * Para execução correta do JSON, seguir os passos do pacote json_rest_server:
-    * https://pub.dev/packages/json_rest_server 
-
+ * Conectividade em arquivo local: product.json
+ 
 Executando o projeto:
  * Faça um clone em seu aruqivo pessoal;
  * Abra em sei editor de códigos de sua preferencia;
