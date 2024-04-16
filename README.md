@@ -4,4 +4,4 @@
 
 Projeto desenvolvido nos seguintes termos:
  * Tecnologia: Flutter - Versão 3.19.4
- * Conectividade em arquivo local: ## products.json
+ * Conectividade em arquivo local: products.json
