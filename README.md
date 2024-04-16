@@ -2,6 +2,8 @@
 
 ## Carrinho de compras com conectividade em um arquivo JSON.
 
+Obs.: Projeto criado somente em Android, é para demostração apenas.
+
 Projeto desenvolvido nos seguintes termos:
  * Tecnologia: Flutter - Versão 3.19.4;
  * Conectividade em arquivo local: products.json
