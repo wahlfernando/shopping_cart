@@ -1,6 +1,8 @@
 import 'package:get/get.dart';
 import 'package:test_shooping/src/feature/shooping_card/home/home_page.dart';
 
+import '../feature/shooping_card/home/home_bindings.dart';
+
 part './app_routes.dart';
 
 class AppPages {
@@ -9,6 +11,6 @@ class AppPages {
   static const initial = Routes.home;
 
   static final routes = [
-    GetPage(name: Routes.home, page: () => const HomePage(), binding: SplashBinding()),
+    GetPage(name: Routes.home, page: () => const HomePage(), binding: HomeBinding()),
   ];
 }
